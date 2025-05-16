@@ -8,7 +8,7 @@ const domain = import.meta.env.BASE_DOMAIN;
 const canonicalURL = new URL(Astro.url.pathname, domain);
 const author = import.meta.env.AUTHOR || 'author';
 const themeColor = import.meta.env.THEME_COLOR || "#000000";
-const siteName = import.meta.env.SITE_NAME || 'none';
+const siteTitle = import.meta.env.SITE_TITLE || 'none';
 ---
 
 <!doctype html>
@@ -53,7 +53,7 @@ const siteName = import.meta.env.SITE_NAME || 'none';
     <meta property="og:type" content="website" />
     <meta property="og:url" content={domain} />
     <meta property="og:image" content=`${domain}/images/ogp.png` />
-    <meta property="og:site_name" content={siteName} />
+    <meta property="og:site_name" content={siteTitle} />
     <meta property="og:locale" content="ja_JP" />
 
     <!-- Twitter Card -->
@@ -81,7 +81,6 @@ const siteName = import.meta.env.SITE_NAME || 'none';
     </script>
   </head>
   <body>
-    <div class="loading-overlay" id="loading-overlay"></div>
     <slot />
     <style is:global lang="scss">
       :root {
@@ -90,20 +89,6 @@ const siteName = import.meta.env.SITE_NAME || 'none';
       html {
         font-family: system-ui, sans-serif;
         font-size: 16px;
-        .loading-overlay {
-          position: fixed;
-          top: 0;
-          bottom: 0;
-          width: 100vw;
-          height: 100vh;
-          height: 100svh;
-          background-color: black;
-          opacity: 0;
-          pointer-events: none;
-          z-index: 10;
-          opacity: 1;
-          pointer-events: all;
-        }
       }
     </style>
   </body>
